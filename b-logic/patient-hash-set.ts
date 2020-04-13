@@ -67,7 +67,7 @@ export class PatientHashSet implements IPatientSet{
 
         let bucket = somePatient.getHashCode() % this.buckets;
         
-        if (!this.patientList[bucket]){git
+        if (!this.patientList[bucket]){
             return false;
         }
 

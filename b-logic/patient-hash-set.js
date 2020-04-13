@@ -17,11 +17,10 @@ var PatientHashSet = /** @class */ (function () {
             return patientSearch;
         }
         ;
-        // let arrayTest: Array<any>  = this.patientList[number1Ybucket];
         for (var _i = 0, _a = this.patientList; _i < _a.length; _i++) {
-            var patientArr = _a[_i];
-            if (patientArr) {
-                for (var _b = 0, _c = patientArr; _b < _c.length; _b++) {
+            var element = _a[_i];
+            if (element) {
+                for (var _b = 0, _c = element; _b < _c.length; _b++) {
                     var p = _c[_b];
                     if (p.equals(newPatient)) {
                         patientSearch = false;
@@ -63,6 +62,7 @@ var PatientHashSet = /** @class */ (function () {
         var patientExists = patientIndex >= 0;
         if (patientExists && patientIndex) {
             this.patientList.splice(patientIndex, 1);
+            this.size -= 1;
         }
         return patientExists;
     };
