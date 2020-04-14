@@ -41,24 +41,23 @@ var PatientHashSet = /** @class */ (function () {
     };
     ;
     PatientHashSet.prototype.contains = function (somePatient) {
-        var patientSearch = true;
         var number1Ybucket = somePatient.getHashCode() % this.buckets;
-        for (var _i = 0, _a = this.patientList[number1Ybucket]; _i < _a.length; _i++) {
-            var element = _a[_i];
-            if (element.equals(somePatient)) {
-                patientSearch = false;
-                return patientSearch;
-            }
+        var patientIndex = this.patientList[number1Ybucket].indexOf(somePatient);
+        var patientExists = patientIndex >= 0;
+        if (patientExists && patientIndex) {
+            return patientExists = true;
         }
-        return patientSearch;
+        else {
+            return patientExists = false;
+        }
     };
     ;
     PatientHashSet.prototype.remove = function (somePatient) {
-        var bucket = somePatient.getHashCode() % this.buckets;
-        if (!this.patientList[bucket]) {
+        var number1Ybucket = somePatient.getHashCode() % this.buckets;
+        if (!this.patientList[number1Ybucket]) {
             return false;
         }
-        var patientIndex = this.patientList[bucket].indexOf(somePatient);
+        var patientIndex = this.patientList[number1Ybucket].indexOf(somePatient);
         var patientExists = patientIndex >= 0;
         if (patientExists && patientIndex) {
             this.patientList.splice(patientIndex, 1);

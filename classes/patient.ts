@@ -19,7 +19,7 @@ export class Patient implements Object{
   
     getName = () => this.name;
   
-    setLastName = (lastName: string): void => {
+    private setLastName = (lastName: string): void => {
       this.lastName = lastName;
     };
   

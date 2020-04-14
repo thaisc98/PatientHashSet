@@ -47,31 +47,28 @@ export class PatientHashSet implements IPatientSet{
 
 
     contains(somePatient: Patient): boolean{
-        let patientSearch: boolean = true;
 
         const number1Ybucket = somePatient.getHashCode() % this.buckets;
-        
-        for(let element of this.patientList[number1Ybucket]){
 
-            if(element.equals(somePatient)){
-                patientSearch = false;
-                return patientSearch;
-            }
+        let patientIndex: number = this.patientList[number1Ybucket].indexOf(somePatient);
+        let patientExists: boolean = patientIndex >= 0;
+
+        if(patientExists && patientIndex){
+            return patientExists = true;
+        }else{
+            return patientExists = false;
         }
-
-    
-        return patientSearch;
     };
 
     remove (somePatient: Patient): boolean {
 
-        let bucket = somePatient.getHashCode() % this.buckets;
+        let number1Ybucket = somePatient.getHashCode() % this.buckets;
         
-        if (!this.patientList[bucket]){
+        if (!this.patientList[number1Ybucket]){
             return false;
         }
 
-        let patientIndex: number = this.patientList[bucket].indexOf(somePatient);
+        let patientIndex: number = this.patientList[number1Ybucket].indexOf(somePatient);
         let patientExists: boolean = patientIndex >= 0;
 
         if(patientExists && patientIndex){
@@ -83,7 +80,7 @@ export class PatientHashSet implements IPatientSet{
     }
 
     all (): Patient[]{
-        return this.patientList
+        return this.patientList;
     };
 
 }
